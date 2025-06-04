@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<BorderPane VBox.vgrow="ALWAYS" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1"
+            fx:controller="controller.TemplateController">
+    <left>
+        <VBox fx:id="sidebar" alignment="TOP_LEFT" spacing="20"  maxHeight="Infinity" VBox.vgrow="ALWAYS">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+
+            <!-- Kontainer isi utama -->
+            <VBox alignment="TOP_LEFT" spacing="20" VBox.vgrow="ALWAYS">
+                <!-- Judul -->
+                <Label style="-fx-font-weight: bold; -fx-font-size: 14px;" text="Bung Karno Akademi" />
+
+                <!-- Navigasi -->
+                <VBox alignment="TOP_LEFT" spacing="10">
+                    <Button text="Beranda" onAction="#onLink" userData="home">
+                        <style>
+                            -fx-font-size: 14px;
+                            -fx-border-width: 0;
+                            -fx-padding: 0 0 0 0;
+                            -fx-background-color: transparent;
+                            -fx-cursor: hand;
+                        </style>
+                    </Button>
+                    <Button text="Tugas" onAction="#onLink" userData="tugas">
+                        <style>
+                            -fx-font-size: 14px;
+                            -fx-border-width: 0;
+                            -fx-padding: 0 0 0 0;
+                            -fx-background-color: transparent;
+                            -fx-cursor: hand;
+                        </style>
+                    </Button>
+                    <Button text="Pelatihan" onAction="#onLink" userData="pelatihan">
+                        <style>
+                            -fx-font-size: 14px;
+                            -fx-border-width: 0;
+                            -fx-padding: 0 0 0 0;
+                            -fx-background-color: transparent;
+                            -fx-cursor: hand;
+                        </style>
+                    </Button>
+                    <Button text="Leaderboard" onAction="#onLink" userData="leaderboard">
+                        <style>
+                            -fx-font-size: 14px;
+                            -fx-border-width: 0;
+                            -fx-padding: 0 0 0 0;
+                            -fx-background-color: transparent;
+                            -fx-cursor: hand;
+                        </style>
+                    </Button>
+                </VBox>
+            </VBox>
+
+            <!-- Tombol Profile -->
+            <HBox alignment="CENTER" spacing="10">
+                <Button text="Profile" onAction="#onLink" userData="profile">
+                    <style>
+                        -fx-font-size: 14px;
+                        -fx-border-width: 0;
+                        -fx-padding: 0 0 0 0;
+                        -fx-background-color: transparent;
+                        -fx-cursor: hand;
+                    </style>
+                </Button>
+
+                <Region HBox.hgrow="ALWAYS" />
+
+                <Button text="Logout" onAction="#onLogout" userData="profile">
+                    <style>
+                        -fx-font-size: 14px;
+                        -fx-font-weight: bold;
+                        -fx-border-width: 0;
+                        -fx-padding: 4 5 4 5;
+                        -fx-text-fill: white;
+                        -fx-background-color: red;
+                        -fx-cursor: hand;
+                    </style>
+                </Button>
+            </HBox>
+        </VBox>
+    </left>
+</BorderPane>

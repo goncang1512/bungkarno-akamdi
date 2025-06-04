@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="anchorContainer"
+            fx:controller="controller.TemplateController"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+          >
+
+    <!-- Sidebar -->
+    <VBox fx:id="sidebarVBox"
+          AnchorPane.topAnchor="0"
+          AnchorPane.leftAnchor="0"
+          AnchorPane.bottomAnchor="0"
+          AnchorPane.rightAnchor="240">
+        <fx:include fx:id="sidebarInclude" source="side-bar.fxml" />
+    </VBox>
+
+    <!-- Content area -->
+    <AnchorPane fx:id="contentPane"
+                style="-fx-background-color: white;"
+                AnchorPane.topAnchor="0"
+                AnchorPane.leftAnchor="240"
+                AnchorPane.rightAnchor="0"
+                AnchorPane.bottomAnchor="0">
+        <!-- Konten dinamis akan dimuat di sini -->
+    </AnchorPane>
+
+</AnchorPane>

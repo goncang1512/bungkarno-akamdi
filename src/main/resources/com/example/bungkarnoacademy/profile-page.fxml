@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
+   <ImageView fx:id="imageProfile" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 10;">
+      <image>
+         <Image url="https://i.pinimg.com/736x/cf/d4/13/cfd413c84851920d5dbc820610176e41.jpg" />
+      </image>
+   </ImageView>
+   <HBox layoutX="176.0" layoutY="20.0" prefHeight="26.0" prefWidth="141.0" spacing="5.0">
+      <children>
+      
+          <Label text="Nama:">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Label>
+         <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Goncang">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+      </children>
+   </HBox>
+   <HBox layoutX="176.0" layoutY="46.0" prefHeight="26.0" prefWidth="122.0" spacing="5.0">
+      <children>
+         <Label text="Level: ">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Label>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="67">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+      </children>
+   </HBox>
+</AnchorPane>
