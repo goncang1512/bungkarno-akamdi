@@ -1,11 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bungkarnoacademy.CardProductController" >
-    <Label fx:id="titleLabel" text="Title" prefWidth="100"/>
-    <Label fx:id="descriptionText" text="Hello" wrapText="true"/>
-    <Label fx:id="priceText" text="Rp1000" prefWidth="100"/>
-</VBox>
+<?import javafx.scene.image.Image?>
+<AnchorPane
+        xmlns:fx="http://javafx.com/fxml" prefWidth="400"
+        style="-fx-background-color: #FFE4C4; -fx-background-radius: 10; -fx-padding: 0 0 10 0;"
+        fx:controller="components.CardProduct">
+    <children>
+        <!-- Avatar & Nama Admin -->
+        <HBox spacing="10" layoutX="15" layoutY="15" alignment="CENTER_LEFT">
+            <children>
+                <ImageView fx:id="avatarImageView" fitWidth="40" fitHeight="40" style="-fx-background-radius: 50%;">
+                    <!-- set image via controller or fx:id -->
+                    <image>
+                        <Image url="https://i.pinimg.com/736x/49/b8/76/49b87619f839674ddb10b1c6d8502538.jpg" />
+                    </image>
+                </ImageView>
+                <Label fx:id="username" text="Admin" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+            </children>
+        </HBox>
+
+        <!-- Judul dan Jadwal -->
+        <VBox layoutX="15" fx:id="boxTitle" userData="id" layoutY="60" spacing="4" style="-fx-cursor: hand;" onMouseClicked="#linkToDetail">
+            <children>
+                <HBox spacing="5" alignment="CENTER_LEFT">
+                    <Label fx:id="nameCourse" text="KOM C" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                </HBox>
+                <Label fx:id="description" text="Pemrograman Web - [PWC01]" style="-fx-font-size: 14px;" />
+            </children>
+        </VBox>
+
+        <!-- Ikon & Jumlah -->
+        <HBox layoutY="130" spacing="20" layoutX="15" prefWidth="370" >
+            <children>
+                <HBox spacing="5">
+                    <Label text="👥" />
+                    <Label fx:id="participant" text="2" />
+                </HBox>
+
+                <Region fx:id="spacer" HBox.hgrow="ALWAYS" />
+
+                <HBox spacing="10">
+                    <HBox spacing="5">
+                        <Label text="📄" />
+                        <Label text="2" />
+                    </HBox>
+                    <Label fx:id="like" text="❤️" />
+                </HBox>
+            </children>
+        </HBox>
+
+        <!-- Menu titik tiga -->
+        <Button style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-cursor: hand;" layoutX="370" layoutY="20">
+            <graphic>
+                <Label text="⋮" style="-fx-font-size: 18px;" />
+            </graphic>
+        </Button>
+    </children>
+</AnchorPane>

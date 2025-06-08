@@ -11,16 +11,14 @@ import lib.SaveToken;
 
 import java.io.IOException;
 
-public class BungKarno extends Application {
+public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Scene scene = new Scene(new Pane(), 1200, 500);
         ScreenController.init(scene); // penting
 
         if(SaveToken.loadToken() != null) {
-            Parent home = ScreenController.loadWithTemplate("com/example/bungkarnoacademy/home-page.fxml");
-            ScreenController.addScreen("home", home);
-            ScreenController.activate("home");
+            ScreenController.loadPage("home");
         } else {
             Parent login = FXMLLoader.load(getClass().getResource("login-page.fxml"));
             Parent register = FXMLLoader.load(getClass().getResource("register-page.fxml"));

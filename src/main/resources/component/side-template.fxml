@@ -19,6 +19,7 @@
 
     <!-- Content area -->
     <AnchorPane fx:id="contentPane"
+                VBox.vgrow="ALWAYS" maxWidth="Infinity"
                 style="-fx-background-color: white;"
                 AnchorPane.topAnchor="0"
                 AnchorPane.leftAnchor="240"

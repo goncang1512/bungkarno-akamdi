@@ -3,15 +3,17 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import lib.Env;
 import lib.Fetch;
 import lib.SaveToken;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AuthController {
-    private String urlApi = "http://localhost:3000/api";
     @FXML
     TextField emailField, passwordField, confirmPasswordField, nameField;
 
@@ -29,7 +31,7 @@ public class AuthController {
             loginData.put("email", email);
             loginData.put("password", password);
 
-            fetcher.fetch(urlApi + "/login", "POST", loginData.toString());
+            fetcher.fetch(Env.URL_API + "/login", "POST", loginData.toString());
             JSONObject data = fetcher.getObj();
             Boolean status = data.getBoolean("status");
 
@@ -64,7 +66,7 @@ public class AuthController {
         dataRegis.put("confirmPassword", confirmPasswordField.getText());
 
         try {
-            fethcer.fetch(urlApi + "/registrasi", "POST", dataRegis.toString());
+            fethcer.fetch(Env.URL_API + "/registrasi", "POST", dataRegis.toString());
             JSONObject data = fethcer.getObj();
             Boolean status = data.getBoolean("status");
 
@@ -87,11 +89,29 @@ public class AuthController {
         dataLogout.put("token", SaveToken.loadToken());
 
         try {
-            fetcher.fetch(urlApi + "/logout", "DELETE", dataLogout.toString());
+            fetcher.fetch(Env.URL_API + "/logout", "DELETE", dataLogout.toString());
             SaveToken.deleteToken();
             ScreenController.loadPage("login");
         } catch (Exception error) {
             error.printStackTrace();
+        }
+    }
+
+    public static JSONObject getSession() {
+        Fetch fetcher = new Fetch();
+        Map<String, String> headers = new HashMap<>();
+
+        headers.put("Authorization", "Bearer "+ SaveToken.loadToken());
+        headers.put("Accept", "application/json");
+
+        try {
+            fetcher.fetch(Env.URL_API + "/session", "GET", null, headers);
+            JSONObject user = fetcher.getObj().getJSONObject("results").getJSONObject("user");
+
+            return user;
+        } catch(Exception error){
+            error.printStackTrace();
+            return null;
         }
     }
 }

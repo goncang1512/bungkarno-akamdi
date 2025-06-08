@@ -29,6 +29,8 @@ public class Fetch {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod(method);
 
+        conn.setRequestProperty("x-api-key", Env.API_KEY);
+
         // Tambahkan headers jika ada
         if (headers != null) {
             for (Map.Entry<String, String> entry : headers.entrySet()) {

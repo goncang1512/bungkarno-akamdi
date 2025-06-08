@@ -5,9 +5,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class ScreenController {
     private static HashMap<String, Parent> screenMap = new HashMap<>();
@@ -33,39 +33,51 @@ public class ScreenController {
         }
     }
 
-    public static Parent loadWithTemplate(String contentFXML) throws IOException {
+    public static Parent loadWithTemplate(FXMLLoader contentLoader) throws IOException {
         // Load template
-
         FXMLLoader templateLoader = new FXMLLoader(ScreenController.class.getResource("/component/side-template.fxml"));
         Parent templateRoot = templateLoader.load();
 
-        // Ambil kontroller
+        // Ambil controller template
         TemplateController templateController = templateLoader.getController();
 
-        // Load konten dinamis
-        Parent content = FXMLLoader.load(ScreenController.class.getResource("/" + contentFXML));
+        // Load konten
+        Parent content = contentLoader.load();
 
-        // Set konten ke dalam contentPane
+        // Set konten ke dalam template
         templateController.setContent(content);
 
         return templateRoot;
     }
 
-    public static Parent loadWithOutTemplate(String contentFXML) throws IOException {
-        FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource("/" + contentFXML));
-        return loader.load();
+    public static Parent loadWithOutTemplate(FXMLLoader contentLoader) throws IOException {
+        return contentLoader.load();
     }
 
+    // Versi default tanpa parameter controller
     public static void loadPage(String link) throws IOException {
+        loadPage(link, null);
+    }
+
+    // Versi dengan akses ke controller
+    public static void loadPage(String link, Consumer<Object> controllerSetup) throws IOException {
+        String fxmlPath = "com/example/bungkarnoacademy/" + link + "-page.fxml";
+        FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource("/" + fxmlPath));
+
         Parent page;
-        if(Objects.equals(link, "login") || Objects.equals(link, "register")) {
-            page = loadWithOutTemplate("com/example/bungkarnoacademy/" + link + "-page.fxml");
+        if (Objects.equals(link, "login") || Objects.equals(link, "register")) {
+            page = loadWithOutTemplate(loader);
         } else {
-            page = ScreenController.loadWithTemplate("com/example/bungkarnoacademy/" + link + "-page.fxml");
+            page = loadWithTemplate(loader);
         }
 
-        ScreenController.addScreen(link, page);
-        ScreenController.activate(link);
-    }
+        // Setup controller jika diminta
+        Object controller = loader.getController();
+        if (controllerSetup != null && controller != null) {
+            controllerSetup.accept(controller);
+        }
 
+        addScreen(link, page);
+        activate(link);
+    }
 }

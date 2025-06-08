@@ -19,6 +19,14 @@
       <artifactId>javafx-controls</artifactId>
       <version>23.0.1</version>
     </dependency>
+
+    <!-- Modul media diperlukan untuk MediaView -->
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-media</artifactId>
+      <version>23.0.1</version>
+    </dependency>
+
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-fxml</artifactId>
@@ -31,6 +39,7 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
