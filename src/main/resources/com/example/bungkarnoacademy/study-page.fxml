@@ -1,57 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudyController"
-            fitToWidth="true" fitToHeight="true"
-            hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
-            style="-fx-padding: 10;">
-
-    <content>
-        <VBox spacing="20" alignment="TOP_CENTER">
-
+<ScrollPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.StudyController"
+            fx:id="scrollPane" fitToWidth="true"
+            style="-fx-background-color: white;">
+    <VBox fx:id="mainContainer" spacing="20"  alignment="TOP_CENTER" style="-fx-padding: 50 0 0 0; -fx-background-color: white;">
+        <!-- CENTER -->
+        <VBox spacing="10" alignment="CENTER">
             <!-- TOP -->
-            <Label fx:id="titleCourse" text="UJIAN">
-                <font>
-                    <Font size="30.0" />
-                </font>
-                <style>
-                    -fx-font-weight: bold;
-                    -fx-padding: 0 0 0 100;
-                </style>
-            </Label>
+            <Text fx:id="titleCourse" text="UJIAN"
+                   style="-fx-font-weight: bold; -fx-font-size: 30px;"/>
+            <VBox fx:id="mediaVidio" alignment="CENTER" spacing="10" />
 
-            <!-- CENTER -->
-            <VBox spacing="10" alignment="CENTER">
-                <VBox fx:id="mediaVidio" alignment="CENTER" spacing="10" />
+            <HBox fx:id="boxControls" alignment="CENTER" spacing="10" style="-fx-padding: 30 0 0 0;">
+                <Button fx:id="buttonPlay" style="-fx-cursor: hand;" text="Play" />
+            </HBox>
 
-                <HBox fx:id="boxControls" alignment="CENTER" spacing="10" style="-fx-padding: 30 0 0 0;">
-                    <Button fx:id="buttonPlay" style="-fx-cursor: hand;" text="Play" />
-                </HBox>
-
-                <HBox alignment="CENTER" style="-fx-padding: 10 0 0 0;" spacing="10">
-                    <TextField fx:id="inputMessage" prefWidth="200.0" promptText="Input message" />
-                    <Button fx:id="buttonSend" onAction="#sendMessage" text="Send" />
-                </HBox>
-            </VBox>
-
-            <!-- BOTTOM -->
-            <VBox fx:id="commentContainer" spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 0 0 0 50">
-                <Label text="HELLO WORLD" style="-fx-padding: 10 0 0 0;" />
-                <Label text="HELLO WORLD" style="-fx-padding: 10 0 0 0;" />
-                <Label text="HELLO WORLD" style="-fx-padding: 10 0 0 0;" />
-                <Label text="HELLO WORLD" style="-fx-padding: 10 0 0 0;" />
-                <Label text="HELLO WORLD" style="-fx-padding: 10 0 0 0;" />
-                <Label text="HELLO WORLD" style="-fx-padding: 10 0 0 0;" />
-            </VBox>
-
+            <HBox alignment="CENTER" style="-fx-padding: 10 0 0 0;" spacing="10">
+                <TextField fx:id="inputMessage" prefWidth="200.0" promptText="Input message" />
+                <Button fx:id="buttonSend" style="-fx-cursor: hand;" onAction="#sendMessage" text="Send" />
+            </HBox>
         </VBox>
-    </content>
+
+        <!-- BOTTOM -->
+        <VBox fx:id="commentContainer" spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 0 100 50 100">
+        </VBox>
+    </VBox>
 </ScrollPane>

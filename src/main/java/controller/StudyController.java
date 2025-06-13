@@ -1,28 +1,36 @@
 package controller;
 
+import components.CardComment;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 import lib.Env;
 import lib.Fetch;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class StudyController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class StudyController implements Initializable {
     @FXML
-    private Label titleCourse;
+    private ScrollPane scrollPane;
     @FXML
-    private VBox mediaVidio, commentContainer;
+    private Text titleCourse;
+    @FXML
+    private VBox mediaVidio, commentContainer, mainContainer;
     @FXML
     private HBox boxControls;
     @FXML
@@ -31,6 +39,10 @@ public class StudyController {
     private TextField inputMessage;
 
     private String pelatihanId;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
 
     public void setPelatihanId(String id) throws Exception {
         this.pelatihanId = id;
@@ -49,20 +61,14 @@ public class StudyController {
 
                 Platform.runLater(() -> {
                     titleCourse.setText(courseName);
-                    String urlVidio = "https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4";
+                    String urlVidio = course.getJSONObject("results").getString("vidioUrl");
                     playMedia(urlVidio);
 
                     commentContainer.getChildren().clear();
 
                     for (int i = 0; i < comments.length(); i++) {
                         JSONObject c = comments.getJSONObject(i);
-                        String content = c.optString("content", "No Content");
-
-                        Label commentLabel = new Label(content);
-                        commentLabel.setStyle("-fx-padding: 10 0 0 0;"); // style sama seperti di FXML
-                        commentLabel.setWrapText(true); // biar teks panjang bisa wrap
-
-                        commentContainer.getChildren().add(commentLabel);
+                        commentPlatform(c);
                     }
                 });
 
@@ -141,12 +147,14 @@ public class StudyController {
         JSONObject dataComment = new JSONObject();
         dataComment.put("comment", message);
         dataComment.put("pelatihan_id", pelatihanId);
+        assert user != null;
         dataComment.put("user_id", user.getString("id"));
 
         fetcher.fetch(Env.URL_API + "/comment", "POST", dataComment.toString(), null);
 
         inputMessage.setText("");
         JSONArray comments = getComment();
+        inputMessage.requestFocus();
 
         loadComments(comments);
     }
@@ -155,26 +163,37 @@ public class StudyController {
         Fetch fetcher = new Fetch();
         fetcher.fetch(Env.URL_API + "/comment/" + pelatihanId, "GET", null, null);
         JSONObject data = fetcher.getObj();
-        JSONArray comments = data.getJSONArray("results");
 
-        return comments;
+        return data.getJSONArray("results");
     }
 
-    public void loadComments(JSONArray comments) {
+    public void loadComments(JSONArray comments)  {
         // Clear dulu commentContainer
         Platform.runLater(() -> {
             commentContainer.getChildren().clear();
 
             for (int i = 0; i < comments.length(); i++) {
                 JSONObject c = comments.getJSONObject(i);
-                String content = c.optString("content", "No Content");
-
-                Label commentLabel = new Label(content);
-                commentLabel.setStyle("-fx-padding: 10 0 0 0;"); // style sama seperti di FXML
-                commentLabel.setWrapText(true); // biar teks panjang bisa wrap
-
-                commentContainer.getChildren().add(commentLabel);
+                commentPlatform(c);
             }
         });
+    }
+
+    public void commentPlatform(JSONObject comment) {
+        FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource("/component/card-comment.fxml"));
+        try {
+            Node cardComment = loader.load();
+            CardComment commentCtrl = loader.getController();
+
+            commentCtrl.setCommentData(
+                    comment.getJSONObject("user").getString("name"),
+                    comment.getString("createdAt"),
+                    comment.getString("content")
+            );
+
+            commentContainer.getChildren().add(cardComment);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
