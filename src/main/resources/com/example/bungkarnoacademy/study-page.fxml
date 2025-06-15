@@ -24,7 +24,7 @@
             </HBox>
 
             <HBox alignment="CENTER" style="-fx-padding: 10 0 0 0;" spacing="10">
-                <TextField fx:id="inputMessage" prefWidth="200.0" promptText="Input message" />
+                <TextField fx:id="inputMessage" prefWidth="400.0" promptText="Input message" />
                 <Button fx:id="buttonSend" style="-fx-cursor: hand;" onAction="#sendMessage" text="Send" />
             </HBox>
         </VBox>

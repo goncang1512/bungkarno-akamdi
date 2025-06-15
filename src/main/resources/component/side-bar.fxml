@@ -19,13 +19,13 @@
             <!-- Kontainer isi utama -->
             <VBox alignment="TOP_LEFT" spacing="20" VBox.vgrow="ALWAYS">
                 <!-- Judul -->
-                <Label style="-fx-font-weight: bold; -fx-font-size: 14px;" text="Bung Karno Akademi" />
+                <Label style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Bung Karno Akademi" />
 
                 <!-- Navigasi -->
                 <VBox alignment="TOP_LEFT" spacing="10">
                     <Button onAction="#onLink" text="Beranda" userData="home">
                         <style>
-                            -fx-font-size: 14px;
+                            -fx-font-size: 16px;
                             -fx-border-width: 0;
                             -fx-padding: 0 0 0 0;
                             -fx-background-color: transparent;
@@ -37,7 +37,7 @@
                     </Button>
                     <Button onAction="#onLink" text="Tugas" userData="tugas">
                         <style>
-                            -fx-font-size: 14px;
+                            -fx-font-size: 16px;
                             -fx-border-width: 0;
                             -fx-padding: 0 0 0 0;
                             -fx-background-color: transparent;
@@ -49,7 +49,7 @@
                     </Button>
                     <Button onAction="#onLink" text="Pelatihan" userData="pelatihan">
                         <style>
-                            -fx-font-size: 14px;
+                            -fx-font-size: 16px;
                             -fx-border-width: 0;
                             -fx-padding: 0 0 0 0;
                             -fx-background-color: transparent;
@@ -61,7 +61,7 @@
                     </Button>
                     <Button onAction="#onLink" text="Leaderboard" userData="leaderboard">
                         <style>
-                            -fx-font-size: 14px;
+                            -fx-font-size: 16px;
                             -fx-border-width: 0;
                             -fx-padding: 0 0 0 0;
                             -fx-background-color: transparent;
@@ -78,7 +78,7 @@
             <HBox alignment="CENTER" spacing="10">
                 <Button onAction="#onLink" text="Profile" userData="profile">
                     <style>
-                        -fx-font-size: 14px;
+                        -fx-font-size: 16px;
                         -fx-border-width: 0;
                         -fx-padding: 0 0 0 0;
                         -fx-background-color: transparent;
@@ -93,7 +93,7 @@
 
                 <Button onAction="#onLogout" text="Logout" userData="profile">
                     <style>
-                        -fx-font-size: 14px;
+                        -fx-font-size: 16px;
                         -fx-font-weight: bold;
                         -fx-border-width: 0;
                         -fx-padding: 4 5 4 5;

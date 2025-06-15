@@ -5,8 +5,14 @@
 <?import javafx.scene.control.Label?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.ProfileController"
+            fx:controller="controller.MyPelatihan"
             prefHeight="400.0" prefWidth="600.0">
 
-    <Label text="Pelatihan" />
+    <VBox style="-fx-padding: 10;">
+        <Label text="Pelatihan Saya" style="-fx-font-weight: bold; -fx-font-size: 30px; -fx-padding: 10 0 10 0;" />
+
+        <GridPane  fx:id="pelatihanContainer" hgap="10" vgap="10">
+
+        </GridPane >
+    </VBox>
 </AnchorPane>

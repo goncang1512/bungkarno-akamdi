@@ -50,11 +50,13 @@ public class StudyController implements Initializable {
     }
 
     private void refreshUIAsync() {
+        JSONObject user = AuthController.getSession();
+
         Task<Void> task = new Task<>() {
             @Override
             protected Void call() throws Exception {
                 Fetch fetcher = new Fetch();
-                fetcher.fetch(Env.URL_API + "/pelatihan/" + pelatihanId, "GET", null, null);
+                fetcher.fetch(Env.URL_API + "/pelatihan/" + pelatihanId  + "?user_id=" + user.getString("id"), "GET", null, null);
                 JSONObject course = fetcher.getObj();
                 String courseName = course.getJSONObject("results").getString("name");
                 JSONArray comments = getComment();
@@ -159,7 +161,7 @@ public class StudyController implements Initializable {
         loadComments(comments);
     }
 
-    private JSONArray getComment() throws Exception {
+    public JSONArray getComment() throws Exception {
         Fetch fetcher = new Fetch();
         fetcher.fetch(Env.URL_API + "/comment/" + pelatihanId, "GET", null, null);
         JSONObject data = fetcher.getObj();
@@ -186,10 +188,14 @@ public class StudyController implements Initializable {
             CardComment commentCtrl = loader.getController();
 
             commentCtrl.setCommentData(
+                    comment.getString("id"),
                     comment.getJSONObject("user").getString("name"),
                     comment.getString("createdAt"),
-                    comment.getString("content")
+                    comment.getString("content"),
+                    comment.getJSONObject("user").getString("id")
             );
+
+            commentCtrl.setStudyController(this);
 
             commentContainer.getChildren().add(cardComment);
         } catch (IOException e) {

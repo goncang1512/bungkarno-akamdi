@@ -9,7 +9,7 @@
             prefHeight="400.0" prefWidth="600.0">
 
     <VBox style="-fx-padding: 10;">
-        <Label text="Home page" />
+        <Label alignment="CENTER_LEFT" text="Home page" style="-fx-font-weight: bold; -fx-font-size: 30px; -fx-padding: 10 0 10 0;" />
 
         <GridPane  fx:id="pelatihanContainer" hgap="10" vgap="10">
 
