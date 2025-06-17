@@ -202,4 +202,16 @@ public class StudyController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
+    public void gotoTask() throws IOException {
+        ScreenController.loadPage("task", controller -> {
+            if (controller instanceof ManageTaskController sc) {
+                try {
+                    sc.setPelatihanId(pelatihanId);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
 }

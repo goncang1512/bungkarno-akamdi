@@ -4,6 +4,7 @@ module com.example.bungkarnoacademy {
     requires org.json;
     requires java.prefs;
     requires javafx.media;
+    requires org.fxmisc.richtext;
 
 
     opens controller to javafx.fxml;

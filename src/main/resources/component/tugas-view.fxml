@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane style="-fx-border-style: solid;
+           -fx-border-color: #cccccc;
+           -fx-background-radius: 12;
+           -fx-border-radius: 12; " xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="components.TugasView">
+    <VBox spacing="12.0" style="-fx-font-size: 16px; -fx-padding: 10;" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+
+        <!-- Title -->
+        <HBox spacing="10">
+            <Label style="-fx-font-weight: bold;" text="Judul Tugas:" />
+            <Label fx:id="titleLabel" wrapText="true" />
+        </HBox>
+
+        <!-- File -->
+        <HBox spacing="10">
+            <Label style="-fx-font-weight: bold;" text="Lampiran File:" />
+            <Hyperlink fx:id="fileLink" text="Unduh File" visible="false" />
+        </HBox>
+
+        <!-- Deadline -->
+        <HBox spacing="10">
+            <Label style="-fx-font-weight: bold;" text="Batas Waktu:" />
+            <Label fx:id="deadlineLabel" />
+        </HBox>
+
+        <!-- Content -->
+        <Label style="-fx-font-weight: bold;" text="Konten Tugas:" />
+        <TextArea fx:id="contentTextArea"           editable="false"
+                  prefRowCount="5"
+                  wrapText="true"
+                  prefHeight="200"
+                  minHeight="200"
+                  maxHeight="200" />
+
+    </VBox>
+</AnchorPane>

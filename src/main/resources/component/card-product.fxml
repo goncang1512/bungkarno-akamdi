@@ -42,14 +42,6 @@
                 </HBox>
 
                 <Region fx:id="spacer" HBox.hgrow="ALWAYS" />
-
-                <HBox spacing="10">
-                    <HBox spacing="5">
-                        <Label text="📄" />
-                        <Label text="2" />
-                    </HBox>
-                    <Label fx:id="like" text="❤️" />
-                </HBox>
             </children>
         </HBox>
 

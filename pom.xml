@@ -20,6 +20,34 @@
       <version>23.0.1</version>
     </dependency>
 
+    <!-- RichTextFX -->
+    <dependency>
+      <groupId>org.fxmisc.richtext</groupId>
+      <artifactId>richtextfx</artifactId>
+      <version>0.10.9</version>
+    </dependency>
+
+    <!-- ReactFX (dependency RichTextFX) -->
+    <dependency>
+      <groupId>org.reactfx</groupId>
+      <artifactId>reactfx</artifactId>
+      <version>2.0-M5</version>
+    </dependency>
+
+    <!-- Flowless (virtualized flow for scrolling) -->
+    <dependency>
+      <groupId>org.fxmisc.flowless</groupId>
+      <artifactId>flowless</artifactId>
+      <version>0.6.7</version>
+    </dependency>
+
+    <!-- WellBehavedFX (untuk behavior input RichTextFX) -->
+    <dependency>
+      <groupId>org.fxmisc.wellbehaved</groupId>
+      <artifactId>wellbehavedfx</artifactId>
+      <version>0.3.3</version>
+    </dependency>
+
     <!-- Modul media diperlukan untuk MediaView -->
     <dependency>
       <groupId>org.openjfx</groupId>

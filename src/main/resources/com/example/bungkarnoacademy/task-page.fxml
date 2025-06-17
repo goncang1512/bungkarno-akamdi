@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+
+<?import javafx.scene.control.ScrollPane?>
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.ManageTaskController"
+            style="-fx-background-color: white; -fx-padding: 0 20 0 20;"
+            fitToWidth="true" fitToHeight="true">
+
+    <VBox style="-fx-background-color: white;" spacing="10" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20">
+        <Label alignment="CENTER_LEFT" text="Tugas" style="-fx-font-weight: bold; -fx-font-size: 30px; -fx-padding: 10 0 10 0;" />
+
+        <!-- Tambahkan Editor -->
+        <HBox alignment="CENTER">
+            <AnchorPane prefWidth="600" fx:id="containerEditor" />
+        </HBox>
+
+        <VBox fx:id="tugasContainer" style="-fx-padding: 0 0 50 0;" spacing="10">
+
+        </VBox>
+    </VBox>
+</ScrollPane>

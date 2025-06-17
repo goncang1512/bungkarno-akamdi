@@ -67,9 +67,9 @@
                             -fx-background-color: transparent;
                             -fx-cursor: hand;
                         </style>
-                  <font>
-                     <Font size="16.0" />
-                  </font>
+                      <font>
+                         <Font size="16.0" />
+                      </font>
                     </Button>
                 </VBox>
             </VBox>

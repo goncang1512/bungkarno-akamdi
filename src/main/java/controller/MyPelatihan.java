@@ -38,6 +38,7 @@ public class MyPelatihan {
             product.setUsername(item.getJSONObject("user").getString("name"));
             product.setProfile(item.getJSONObject("user").getString("image"));
             product.setUserData(item.getString("id"));
+            product.setParticipant(item.getJSONObject("_count").getInt("enrolled"));
 
             // Tambahkan ke dalam container
             GridPane.setColumnIndex(cardProduct, column);
