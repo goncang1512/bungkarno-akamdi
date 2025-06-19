@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.SubmissionController"
+            fitToHeight="true"
+            fitToWidth="true" style="-fx-background-color: white;" >
+    <VBox style="-fx-padding: 20;  -fx-background-color: white;" spacing="30">
+        <VBox style="-fx-font-size: 16px;" spacing="15" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+            <!-- Judul Tugas -->
+            <HBox spacing="10">
+                <Button text="Kembali" onAction="#backToTask" style="-fx-cursor: hand;" />
+
+                <Label alignment="CENTER" text="title" fx:id="titleLabel" style="-fx-font-size: 20px; -fx-font-weight: bold;" wrapText="true" />
+                <Label alignment="CENTER" text="-" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                <Label alignment="CENTER" text="pelatihan name" fx:id="titlePelatihan" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            </HBox>
+
+            <!-- Deadline -->
+            <HBox spacing="5">
+                <Label text="Batas Waktu:" style="-fx-font-weight: bold;" />
+                <Label text="Senin, 13 Desember 2025" fx:id="deadlineLabel" />
+            </HBox>
+
+            <!-- Konten tugas -->
+            <VBox spacing="5">
+                <Label text="Deskripsi:" style="-fx-font-weight: bold;" />
+                <Text text="CONTENT" fx:id="contentTask" wrappingWidth="500" />
+            </VBox>
+        </VBox>
+
+        <VBox fx:id="inputSubmission" />
+    </VBox>
+</ScrollPane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="components.SubmissionView"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox fx:id="submissionContainer"
+          spacing="15"
+          AnchorPane.topAnchor="0"
+          AnchorPane.leftAnchor="0"
+          AnchorPane.rightAnchor="0"
+          AnchorPane.bottomAnchor="0">
+        <!-- Tugas yang dikumpulkan -->
+        <Label text="Tugas yang Sudah Dikumpulkan" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+        <HBox alignment="CENTER_LEFT" fx:id="submittedTaskBox"
+              spacing="10"
+              style="-fx-background-color: #f8f8f8; -fx-padding: 12; -fx-background-radius: 8; -fx-border-color: #cccccc; -fx-border-radius: 8; -fx-font-size: 16px;">
+
+            <VBox>
+                <Label fx:id="titleLabel" text="Judul Tugas" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                <Label fx:id="contentLabel" text="Isi atau deskripsi tugas." wrapText="true"/>
+
+                <HBox spacing="5">
+                    <Label text="Tanggal Submit:" style="-fx-font-weight: bold;" />
+                    <Label fx:id="submitDateLabel" />
+                </HBox>
+            </VBox>
+
+            <!-- Spacer agar button ke kanan -->
+            <Region fx:id="spacer" HBox.hgrow="ALWAYS"/>
+
+            <!-- Tombol delete -->
+            <Button fx:id="buttonDelete" alignment="CENTER_RIGHT" text="DELETE" onAction="#deleteTugas" style="-fx-cursor: hand;" />
+        </HBox>
+    </VBox>
+
+</AnchorPane>

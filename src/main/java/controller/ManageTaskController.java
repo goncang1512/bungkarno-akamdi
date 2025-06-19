@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import lib.Env;
 import lib.Fetch;
@@ -20,7 +22,7 @@ public class ManageTaskController {
     @FXML
     private AnchorPane containerEditor;
     @FXML
-    private VBox tugasContainer;
+    private GridPane tugasContainer;
 
     public void setPelatihanId(String pelatihanId) throws Exception {
         this.pelatihanId = pelatihanId;
@@ -43,6 +45,8 @@ public class ManageTaskController {
     }
 
     public void showtTaskClass(String pelatihanId) throws Exception {
+        int column = 0;
+        int row = 0;
         tugasContainer.getChildren().clear();
         Fetch fetcher = new Fetch();
         fetcher.fetch(Env.URL_API + "/tugas/" + pelatihanId, "GET", null, null);
@@ -52,11 +56,21 @@ public class ManageTaskController {
             JSONObject item = dataTask.getJSONObject(i);
 
             FXMLLoader loader = new FXMLLoader(ScreenController.class.getResource("/component/tugas-view.fxml"));
-            Node cardProduct = loader.load();
+            Node cardTask = loader.load();
             TugasView controller = loader.getController();
 
-            controller.setTugasView(item.getString("title"), item.getString("content"), item.getString("deadline"));
-            tugasContainer.getChildren().add(cardProduct);
+            controller.setTugasView(item.getString("title"), item.getString("deadline"), item.getString("id"));
+
+            GridPane.setHgrow(cardTask, Priority.ALWAYS);
+            GridPane.setVgrow(cardTask, Priority.ALWAYS);
+
+            tugasContainer.add(cardTask, column, row);
+
+            column++;
+            if (column == 2) { // Maksimal 3 kolom
+                column = 0;
+                row++;
+            }
         }
     }
 }
