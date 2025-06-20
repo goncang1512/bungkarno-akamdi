@@ -34,8 +34,6 @@ public class SubmissionTask {
         fetcher.fetch(Env.URL_API + "/submission", "POST", taskData.toString(), null);
         JSONObject data = fetcher.getObj();
 
-        System.out.println(data);
-
         if(data.getBoolean("status")) {
             submission.getTask(taskId);
         }
